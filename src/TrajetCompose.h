@@ -9,7 +9,6 @@
 #define TRAJETCOMPOSE_H
 
 #include "Trajet.h"
-#define MAX_TRAJET_SIZE 100
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -29,12 +28,14 @@ class TrajetCompose : public Trajet {
 public:
   //----------------------------------------------------- Méthodes publiques
 
+  void afficher() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
   // Contrat :
   //
 
+  void ajouterEtape( const Trajet * nouvelleEtape);
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
@@ -68,7 +69,7 @@ public:
   //
 
   TrajetCompose(const char *titre, const char *villeArrivee,
-                const char *villeDepart, const EMoyenTransport moyenTransport, Trajet* trajets, unsigned int nb_trajet);
+                const char *villeDepart, const EMoyenTransport moyenTransport);
   // Mode d'emploi :
   //
   // Contrat :
@@ -86,7 +87,8 @@ protected:
   //----------------------------------------------------- Méthodes protégées
 
   //----------------------------------------------------- Attributs protégés
-  Trajet* trajets;
+  // will become a linked list 
+  Trajet* steps;
   unsigned int nb_trajets;
 };
 

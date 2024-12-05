@@ -1,6 +1,5 @@
 #include "Trajet.h"
 #include <iostream>
-using namespace std;
 
 char *Trajet::getTitre() const { return titre; }
 char *Trajet::getVilleArrivee() const { return villeArrivee; }
@@ -97,4 +96,9 @@ Trajet::~Trajet() {
   delete[] villeDepart;
 }
 
-void Trajet::afficher() const { cout << "Trajet : " << titre << endl; }
+void Trajet::afficher() const {
+  std::cout << "Trajet : " << titre << std::endl;
+  std::cout << "Ville d'arrivee : " << villeArrivee << std::endl;
+  std::cout << "Ville de depart : " << villeArrivee << std::endl;
+  std::cout << "Moyen de transport : " << villeArrivee << std::endl;
+}
