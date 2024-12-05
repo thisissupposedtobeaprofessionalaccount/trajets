@@ -51,7 +51,13 @@ public:
   //
 
   EMoyenTransport getMoyenTransport() const;
+  // type Méthode ( liste des paramètres );
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
 
+  virtual void afficher() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //

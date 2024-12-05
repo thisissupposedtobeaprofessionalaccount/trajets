@@ -8,7 +8,7 @@
 #if !defined(CATALOGUE_H)
 #define CATALOGUE_H
 #include "Trajet.h"
-#define MAX_TRAJET_NB 1000
+#define MAX_TRAJET_NB 5
 
 //--------------------------------------------------- Interfaces utilisées
 

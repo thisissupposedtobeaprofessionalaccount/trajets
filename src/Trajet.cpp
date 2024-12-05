@@ -1,4 +1,6 @@
 #include "Trajet.h"
+#include <iostream>
+using namespace std;
 
 char *Trajet::getTitre() const { return titre; }
 char *Trajet::getVilleArrivee() const { return villeArrivee; }
@@ -6,6 +8,9 @@ char *Trajet::getVilleDepart() const { return villeDepart; }
 EMoyenTransport Trajet::getMoyenTransport() const { return moyenTransport; }
 
 Trajet &Trajet::operator=(const Trajet &autre) {
+  delete[] titre;
+  delete[] villeArrivee;
+  delete[] villeDepart;
   this->titre = new char[MAX_STRING_SIZE];
   this->villeArrivee = new char[MAX_STRING_SIZE];
   this->villeDepart = new char[MAX_STRING_SIZE];
@@ -39,10 +44,19 @@ Trajet &Trajet::operator=(const Trajet &autre) {
   return *this;
 }
 
-Trajet::Trajet(const Trajet &autre) { *this = autre; }
+Trajet::Trajet(const Trajet &autre) {
+#ifdef MAP
+  cout << "Construction par copie de Trajet" << endl;
+#endif
+
+  *this = autre;
+}
 
 Trajet::Trajet(const char *titre, const char *villeArrivee,
                const char *villeDepart, const EMoyenTransport moyenTransport) {
+#ifdef MAP
+  cout << "Construction de Trajet" << endl;
+#endif
   this->titre = new char[MAX_STRING_SIZE];
   this->villeArrivee = new char[MAX_STRING_SIZE];
   this->villeDepart = new char[MAX_STRING_SIZE];
@@ -75,7 +89,12 @@ Trajet::Trajet(const char *titre, const char *villeArrivee,
 }
 
 Trajet::~Trajet() {
+#ifdef MAP
+  cout << "Destruction de Trajet" << endl;
+#endif
   delete[] titre;
   delete[] villeArrivee;
   delete[] villeDepart;
 }
+
+void Trajet::afficher() const { cout << "Trajet : " << titre << endl; }

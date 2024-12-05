@@ -10,10 +10,15 @@ INT = $(SRC_DIR)Trajet.h $(SRC_DIR)TrajetSimple.h $(SRC_DIR)TrajetCompose.h $(SR
 REAL = $(INT:.h=.cpp) $(SRC_DIR)main.cpp
 OBJ = $(REAL:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
 
-$(BIN_DIR)$(NOM_APP) : $(OBJ)
+$(BIN_DIR)$(NOM_APP) : $(OBJ) 
 	$(EDL) $(EDL_OPTS) -o $(BIN_DIR)$(NOM_APP) $(OBJ) 
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.cpp
+
+$(OBJ_DIR)%.o : $(SRC_DIR)%.cpp $(SRC_DIR)%.h
+	$(COMP) $(COMP_OPTS) $< -o $@
+
+# main n'a pas de .h, règle spécifique
+$(OBJ_DIR)main.o : $(SRC_DIR)main.cpp
 	$(COMP) $(COMP_OPTS) $< -o $@
 
 clean : 
