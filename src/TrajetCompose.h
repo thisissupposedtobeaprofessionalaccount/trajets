@@ -8,6 +8,7 @@
 #if !defined(TRAJETCOMPOSE_H)
 #define TRAJETCOMPOSE_H
 
+#define MAX_TRAJET_SIZE 5
 #include "Trajet.h"
 
 //--------------------------------------------------- Interfaces utilisées
@@ -35,7 +36,7 @@ public:
   // Contrat :
   //
 
-  void ajouterEtape( const Trajet * nouvelleEtape);
+  void ajouterEtape( const Trajet & nouvelleEtape);
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //

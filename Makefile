@@ -6,7 +6,8 @@ COMP_OPTS = -ansi -pedantic -Wall -std=c++11 -c -g
 SRC_DIR = src/
 OBJ_DIR = obj/
 BIN_DIR = bin/
-INT = $(SRC_DIR)Trajet.h $(SRC_DIR)TrajetSimple.h $(SRC_DIR)TrajetCompose.h $(SRC_DIR)Catalogue.h
+INT = $(SRC_DIR)Trajet.h $(SRC_DIR)TrajetSimple.h $(SRC_DIR)TrajetCompose.h $(SRC_DIR)Catalogue.h $(SRC_DIR)ListeChainee.h $(SRC_DIR)Cell.h
+
 REAL = $(INT:.h=.cpp) $(SRC_DIR)main.cpp
 OBJ = $(REAL:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
 
