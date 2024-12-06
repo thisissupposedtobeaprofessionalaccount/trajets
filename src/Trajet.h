@@ -65,6 +65,12 @@ public:
   //
 
   //------------------------------------------------- Surcharge d'opérateurs
+  bool operator==(const Trajet &autre);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
   Trajet &operator=(const Trajet &autreTrajet);
   // Mode d'emploi :
   //

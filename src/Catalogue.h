@@ -5,6 +5,7 @@
 *************************************************************************/
 
 //---------- Interface de la classe <> (fichier Catalogue.h) ----------------
+#include "ListeChainee.h"
 #if !defined(CATALOGUE_H)
 #define CATALOGUE_H
 #include "Trajet.h"
@@ -35,25 +36,11 @@ public:
   // Contrat :
   //
 
-  // void supprimerTrajet();
+  int supprimerTrajet(const char* titre); 
   //  type Méthode ( liste des paramètres );
   //  Mode d'emploi :
   //
   //  Contrat :
-  //
-
-  Trajet *getTrajets() const;
-  // type Méthode ( liste des paramètres );
-  // Mode d'emploi :
-  //
-  // Contrat :
-  //
-
-  unsigned int getNbTrajets() const;
-  // type Méthode ( liste des paramètres );
-  // Mode d'emploi :
-  //
-  // Contrat :
   //
 
   //------------------------------------------------- Surcharge d'opérateurs
@@ -87,8 +74,7 @@ protected:
   //----------------------------------------------------- Méthodes protégées
 
   //----------------------------------------------------- Attributs protégés
-  Trajet *trajets;
-  unsigned int nbTrajets;
+  ListeChainee<Trajet> trajets;
 };
 
 //-------------------------------- Autres définitions dépendantes de Trajet

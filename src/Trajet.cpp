@@ -6,6 +6,11 @@ char *Trajet::getVilleArrivee() const { return villeArrivee; }
 char *Trajet::getVilleDepart() const { return villeDepart; }
 EMoyenTransport Trajet::getMoyenTransport() const { return moyenTransport; }
 
+
+bool Trajet::operator==(const Trajet &autre){
+  return this->titre;
+}
+
 Trajet &Trajet::operator=(const Trajet &autre) {
   delete[] titre;
   delete[] villeArrivee;

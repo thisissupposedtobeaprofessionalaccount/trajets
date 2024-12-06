@@ -5,31 +5,18 @@
 #include "TrajetSimple.h"
 
 int main() {
-//  Catalogue catalogue = Catalogue();
-//  TrajetSimple nouveauTrajetSimple("mon trajet", "a", "b", helicoptere);
-//  TrajetSimple nouveauTrajetSimple2("mon trajet", "b", "c", helicoptere);
-//
-//  TrajetCompose nouveauTrajetComp("mon trajet compose", "a", "c", voiture);
-//  nouveauTrajetComp.ajouterEtape(nouveauTrajetSimple2);
-//  catalogue.ajouterTrajet(nouveauTrajetSimple);
-//  catalogue.ajouterTrajet(nouveauTrajetComp);
+  Catalogue catalogue = Catalogue();
+  TrajetSimple nouveauTrajetSimple("mon trajet", "a", "b", helicoptere);
+  TrajetSimple nouveauTrajetSimple2("mon trajet", "b", "c", helicoptere);
 
-//  catalogue.getTrajets()[1].afficher();
+  TrajetCompose nouveauTrajetComp("mon trajet compose", "a", "c", voiture);
+  nouveauTrajetComp.ajouterEtape(nouveauTrajetSimple2);
+  catalogue.ajouterTrajet(nouveauTrajetSimple);
+  catalogue.ajouterTrajet(nouveauTrajetComp);
 
- ListeChainee liste; 
+  catalogue.getTrajets()[1].afficher();
 
- liste.afficher();
- liste.insertAtTail(10);
- liste.insertAtTail(12);
- liste.insertAtTail(16);
- liste.insertAtTail(7);
- liste.insertAtTail(15);
- liste.insertAtHead(19);
- liste.afficher();
 
- liste.deleteCell(10);
- liste.deleteCell(16);
- liste.afficher();
 
 
 }
