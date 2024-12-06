@@ -8,8 +8,8 @@
 #if !defined(TRAJET_H)
 #define TRAJET_H
 
-#include "MoyenTransport.h"
 #define MAX_STRING_SIZE 64
+#include "MoyenTransport.h"
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -66,6 +66,12 @@ public:
 
   //------------------------------------------------- Surcharge d'opérateurs
   bool operator==(const Trajet &autre);
+  // Mode d'emploi :
+  //
+  // Contrat :
+  //
+
+  bool operator!=(const Trajet &autre);
   // Mode d'emploi :
   //
   // Contrat :

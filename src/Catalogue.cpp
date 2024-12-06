@@ -1,6 +1,5 @@
 #include "Catalogue.h"
 #include "Trajet.h"
-#include <iostream>
 
 Catalogue::Catalogue() {
 #ifdef MAP
@@ -10,7 +9,6 @@ Catalogue::Catalogue() {
 
 ListeChainee<Trajet> Catalogue::getTrajets() const { return trajets; }
 
-
 Catalogue::~Catalogue() {
 #ifdef MAP
   cout << "Destruction de Catalogue" << endl;
@@ -19,8 +17,9 @@ Catalogue::~Catalogue() {
 
 int Catalogue::ajouterTrajet(const Trajet &nouveauTrajet) {
   trajets.insertAtTail(nouveauTrajet);
+  return 1;
 }
 
-int Catalogue::supprimerTrajet(const char* titre) {
-  trajets.deleteCell(Trajet(titre));
+int Catalogue::supprimerTrajetParTitre(const char* titre) {
+  return trajets.deleteCell(Trajet(titre));
 }

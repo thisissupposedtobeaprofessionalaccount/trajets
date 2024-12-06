@@ -34,7 +34,7 @@ public:
     //
     // Contrat :
     //
-    T getData() const;
+    T* getData() const;
     // Mode d'emploi :
     //
     // Contrat :
@@ -83,10 +83,83 @@ protected:
 //----------------------------------------------------- Methodes protegees
 
 //----------------------------------------------------- Attributs proteges
-    T data;
+    T* data;
     Cell* next;
 };
 
 //-------------------------------- Autres definitions dependantes de <Cell>
+template <typename T>
+T* Cell<T>::getData() const
+// Algorithme :
+//
+{
+    return data;
+} //----- Fin de getData
+
+template <typename T>
+void Cell<T>::setData(T d)
+// Algorithme :
+//
+{
+    data = d;
+} //----- Fin de setData
+
+template <typename T>
+Cell<T>* Cell<T>::getNext() const
+// Algorithme :
+//
+{
+    return next;
+} //----- Fin de getNext
+
+template <typename T>
+void Cell<T>::setNext(Cell *n)
+// Algorithme :
+//
+{
+    next = n;
+} //----- Fin de setNext
+
+//------------------------------------------------- Surcharge d'opérateurs
+/*Xxx & Xxx::operator = ( const Xxx & unXxx )
+// Algorithme :
+//
+{
+} //----- Fin de operator =*/
+
+//-------------------------------------------- Constructeurs - destructeur
+template <typename T>
+Cell<T>::Cell ()
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Cell>" << endl;
+#endif
+    data = 0;
+    next = nullptr;
+} //----- Fin de Cell
+
+template <typename T>
+Cell<T>::Cell (T value) //: data(value)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Cell>" << endl;
+#endif
+    *this->data = value;
+    this->next = nullptr;
+} //----- Fin de Cell
+
+template <typename T>
+Cell<T>::~Cell()
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <Cell>" << endl;
+#endif
+} //----- Fin de ~Cell
 
 #endif // CELL_H

@@ -6,9 +6,34 @@ char *Trajet::getVilleArrivee() const { return villeArrivee; }
 char *Trajet::getVilleDepart() const { return villeDepart; }
 EMoyenTransport Trajet::getMoyenTransport() const { return moyenTransport; }
 
+bool Trajet::operator==(const Trajet &autre) {
+  char current_this = this->titre[0];
+  char current_autre = autre.titre[0];
+  int count = 0;
 
-bool Trajet::operator==(const Trajet &autre){
-  return this->titre;
+  while (current_this != '\0' && current_autre != '\0') {
+    if (current_this != current_autre)
+      return false;
+    count++;
+    current_this = this->titre[count];
+    current_autre = autre.titre[count];
+  }
+  return true;
+}
+
+bool Trajet::operator!=(const Trajet &autre) {
+  char current_this = this->titre[0];
+  char current_autre = autre.titre[0];
+  int count = 0;
+
+  while (current_this != '\0' && current_autre != '\0') {
+    if (current_this != current_autre)
+      return true;
+    count++;
+    current_this = this->titre[count];
+    current_autre = autre.titre[count];
+  }
+  return false;
 }
 
 Trajet &Trajet::operator=(const Trajet &autre) {

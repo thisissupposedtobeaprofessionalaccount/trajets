@@ -5,10 +5,12 @@
 *************************************************************************/
 
 //---------- Interface de la classe <> (fichier Catalogue.h) ----------------
-#include "ListeChainee.h"
 #if !defined(CATALOGUE_H)
 #define CATALOGUE_H
+
 #include "Trajet.h"
+#include "ListeChainee.h"
+
 #define MAX_TRAJET_NB 5
 
 //--------------------------------------------------- Interfaces utilisées
@@ -36,12 +38,14 @@ public:
   // Contrat :
   //
 
-  int supprimerTrajet(const char* titre); 
+  int supprimerTrajetParTitre(const char *titre);
   //  type Méthode ( liste des paramètres );
   //  Mode d'emploi :
   //
   //  Contrat :
   //
+
+  ListeChainee<Trajet> getTrajets() const;
 
   //------------------------------------------------- Surcharge d'opérateurs
   // Trajet & operator = ( const Trajet & autreTrajet );
