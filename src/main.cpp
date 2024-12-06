@@ -24,9 +24,11 @@ int main() {
  liste.insertAtTail(16);
  liste.insertAtTail(7);
  liste.insertAtTail(15);
+ liste.insertAtHead(19);
  liste.afficher();
 
  liste.deleteCell(10);
+ liste.deleteCell(16);
  liste.afficher();
 
 

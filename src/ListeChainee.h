@@ -25,6 +25,7 @@
 //
 //------------------------------------------------------------------------
 
+template <typename T>
 class ListeChainee {
   //----------------------------------------------------------------- PUBLIC
 
@@ -36,7 +37,7 @@ public:
   // Contrat :
   //
 
-  Cell *getHead() const;
+  Cell<T> *getHead() const;
   // Mode d'emploi :
   //
   // Contrat :
@@ -50,20 +51,20 @@ public:
   // Contrat:
   //
 
-  void insertAtTail(int value);
+  void insertAtTail(T value);
   // Mode d'emploi:
   //  creates a new node of the value, makes the head of the list be the new
   //  node and then t
   // Contrat:
   //
-  void insertAtHead(int value);
+  void insertAtHead(T value);
   // Mode d'emploi:
   //  creates a new node of the value, makes the head of the list be the new
   //  node and then t
   // Contrat:
   //
 
-  int deleteCell(int value);
+  int deleteCell(T value);
   // Mode d'emploi:
   //  checks if list is empty then checks if the node we want to delete is the
   //  first node if not, we check while the list is not NULL we also check if
@@ -88,7 +89,7 @@ public:
 
 protected:
   //----------------------------------------------------- Methodes protegees
-  void setHead(Cell *h);
+  void setHead(Cell<T> *h);
   // Mode d'emploi :
   //
   // Contrat :
@@ -101,7 +102,7 @@ protected:
 
 
   //----------------------------------------------------- Attributs proteges
-  Cell *head;
+  Cell<T> *head;
 };
 
 //-------------------------------- Autres definitions dependantes de

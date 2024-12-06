@@ -29,25 +29,28 @@
 //{
 //} //----- Fin de Méthode
 
-Cell *ListeChainee::getHead() const
+template <typename T> 
+Cell<T> *ListeChainee<T>::getHead() const
 // Algorithme :
 //
 {
   return head;
 } //----- Fin de getHead
 
-void ListeChainee::setHead(Cell *h)
+template <typename T> 
+void ListeChainee<T>::setHead(Cell<T> *h)
 // Algorithme :
 //
 {
   head = h;
 } //----- Fin de setHead
 
-void ListeChainee::afficher()
+template <typename T> 
+void ListeChainee<T>::afficher()
 // Algorithme:
 //
 {
-  Cell *temp = head;
+  Cell<T> *temp = head;
 
   if (head == nullptr) {
     std::cout << "List is empty" << std::endl;
@@ -62,44 +65,47 @@ void ListeChainee::afficher()
 
 } //----- Fin d'Afficher
 
-void ListeChainee::insertAtTail(int value)
+template <typename T> 
+void ListeChainee<T>::insertAtTail(T value)
 // Algorithme :
 //
 {
-  Cell *newCell = new Cell(value);
+  Cell<T> *newCell = new Cell(value);
   if (head == nullptr) {
     setHead(newCell);
     return;
   }
-  Cell *temp = head;
+  Cell<T> *temp = head;
   while (temp->getNext() != nullptr) {
     temp = temp->getNext();
   }
   temp->setNext(newCell);
 } //----- Fin d'insertAtTail
 
-void ListeChainee::insertAtHead(int value)
+template <typename T> 
+void ListeChainee<T>::insertAtHead(T value)
 // Algorithme :
 //
 {
-  Cell *newCell = new Cell(value);
+  Cell<T> *newCell = new Cell<T>(value);
   newCell->setNext(head);
   head = newCell;
 } //----- Fin d'insertAtHead
 
-int ListeChainee::deleteCell(int value)
+template <typename T> 
+int ListeChainee<T>::deleteCell(T value)
 // Algorithme :
 {
   if (head == nullptr)
     return 0;
   if (head->getData() == value) {
-    Cell* tmp = head;
+    Cell<T>* tmp = head;
     head = tmp->getNext();
     delete tmp;
     return 1;
   }
 
-  Cell *current = head;
+  Cell<T> *current = head;
   while (current->getNext() != nullptr && current->getNext()->getData() != value) {
     current = current->getNext();
   }
@@ -107,20 +113,21 @@ int ListeChainee::deleteCell(int value)
   if (current->getNext() == nullptr)
     return 0;
 
-  Cell * toDelete = current->getNext();
-  Cell *after = toDelete->getNext();
+  Cell<T> * toDelete = current->getNext();
+  Cell<T> *after = toDelete->getNext();
   current->setNext(after);
   delete toDelete;
 
   return 1;
 } //----- Fin de deleteCell
 
-void ListeChainee::freeList()
+template <typename T> 
+void ListeChainee<T>::freeList()
 // Algorithme :
 // While the list is not empty we store the current head, move the head to the
 // next node and then free the current node
 {
-  Cell *temp;
+  Cell<T> *temp;
   while (head != nullptr) {
     temp = head;
     head = head->getNext();
@@ -136,7 +143,8 @@ void ListeChainee::freeList()
 } //----- Fin de operator =*/
 
 //-------------------------------------------- Constructeurs - destructeur
-ListeChainee::ListeChainee()
+template <typename T> 
+ListeChainee<T>::ListeChainee()
     : head(nullptr)
 // Algorithme :
 //
@@ -146,7 +154,8 @@ ListeChainee::ListeChainee()
 #endif
 } //----- Fin de ListeChainee
 
-ListeChainee::~ListeChainee()
+template <typename T> 
+ListeChainee<T>::~ListeChainee()
 // Algorithme :
 //
 {

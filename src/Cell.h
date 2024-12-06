@@ -22,7 +22,8 @@
 //
 //------------------------------------------------------------------------
 
-class Cell
+template <typename T>
+class Cell 
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -33,13 +34,13 @@ public:
     //
     // Contrat :
     //
-    int getData() const;
+    T getData() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void setData(int d);
+    void setData(T d);
     // Mode d'emploi :
     //
     // Contrat :
@@ -64,7 +65,7 @@ public:
     // Contrat :
     //
 
-    Cell (int value);
+    Cell (T value);
     // Mode d'emploi :
     //
     // Contrat :
@@ -82,7 +83,7 @@ protected:
 //----------------------------------------------------- Methodes protegees
 
 //----------------------------------------------------- Attributs proteges
-    int data;
+    T data;
     Cell* next;
 };
 
