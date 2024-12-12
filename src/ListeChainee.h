@@ -38,13 +38,13 @@ public:
   // Contrat :
   //
 
-  Cell<T> *getHead() const;
+  const Cell<T> *getHead() const;
   // Mode d'emploi :
   //
   // Contrat :
   //
 
-  void afficher();
+  void afficher() const ;
   // Mode d'emploi:
   //  Firstly checks if the list is NULL
   //  While the list is not NULL it prints the value of the element then it goes
@@ -52,20 +52,20 @@ public:
   // Contrat:
   //
 
-  void insertAtTail(T value);
+  void insertAtTail(const T& value);
   // Mode d'emploi:
   //  creates a new node of the value, makes the head of the list be the new
   //  node and then t
   // Contrat:
   //
-  void insertAtHead(T value);
+  void insertAtHead(const T& value);
   // Mode d'emploi:
   //  creates a new node of the value, makes the head of the list be the new
   //  node and then t
   // Contrat:
   //
 
-  int deleteCell(T value);
+  int deleteCell(const T& value);
   // Mode d'emploi:
   //  checks if list is empty then checks if the node we want to delete is the
   //  first node if not, we check while the list is not NULL we also check if
@@ -73,7 +73,7 @@ public:
   // Contrat:
   //
 
-  int deleteAllCell(T value);
+  int deleteAllCell(const T& value);
   // Mode d'emploi:
   //  checks if list is empty then checks if the node we want to delete is the
   //  first node if not, we check while the list is not NULL we also check if
@@ -97,7 +97,7 @@ public:
 
 protected:
   //----------------------------------------------------- Methodes protegees
-  void setHead(Cell<T> *h);
+  void setHead(const Cell<T> *h);
   // Mode d'emploi :
   //
   // Contrat :
@@ -114,7 +114,7 @@ protected:
 };
 
 template <typename T> 
-Cell<T> *ListeChainee<T>::getHead() const
+const Cell<T> *ListeChainee<T>::getHead() const
 // Algorithme :
 //
 {
@@ -122,7 +122,7 @@ Cell<T> *ListeChainee<T>::getHead() const
 } //----- Fin de getHead
 
 template <typename T> 
-void ListeChainee<T>::setHead(Cell<T> *h)
+void ListeChainee<T>::setHead(const Cell<T> *h)
 // Algorithme :
 //
 {
@@ -130,7 +130,7 @@ void ListeChainee<T>::setHead(Cell<T> *h)
 } //----- Fin de setHead
 
 template <typename T> 
-void ListeChainee<T>::afficher()
+void ListeChainee<T>::afficher() const 
 // Algorithme:
 //
 {
@@ -150,7 +150,7 @@ void ListeChainee<T>::afficher()
 } //----- Fin d'Afficher
 
 template <typename T> 
-void ListeChainee<T>::insertAtTail(T value)
+void ListeChainee<T>::insertAtTail(const T& value)
 // Algorithme :
 {
   Cell<T> *newCell = new Cell<T>(value);
@@ -166,7 +166,7 @@ void ListeChainee<T>::insertAtTail(T value)
 } //----- Fin d'insertAtTail
 
 template <typename T> 
-void ListeChainee<T>::insertAtHead(T value)
+void ListeChainee<T>::insertAtHead(const T& value)
 // Algorithme :
 //
 {
@@ -176,7 +176,7 @@ void ListeChainee<T>::insertAtHead(T value)
 } //----- Fin d'insertAtHead
 
 template <typename T> 
-int ListeChainee<T>::deleteCell(T value)
+int ListeChainee<T>::deleteCell(const T& value)
 // Algorithme :
 {
   if (head == nullptr)
@@ -205,7 +205,7 @@ int ListeChainee<T>::deleteCell(T value)
 } //----- Fin de deleteCell
 
 template <typename T>
-int ListeChainee<T>::deleteAllCell(T value){
+int ListeChainee<T>::deleteAllCell(const T& value){
   if (head == nullptr) return 0;
   Cell<T> *previous = head;
   Cell<T> *current = head->getNext();

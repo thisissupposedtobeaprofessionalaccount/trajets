@@ -31,21 +31,21 @@ class Catalogue {
 public:
   //----------------------------------------------------- Méthodes publiques
 
-  int ajouterTrajet(const Trajet &nouveauTrajet);
+  bool ajouterTrajet(const Trajet &nouveauTrajet);
 
   // Mode d'emploi :
   //
   // Contrat :
   //
 
-  int supprimerTrajetParTitre(const char *titre);
+  bool supprimerTrajetParTitre(const char *titre);
   //  type Méthode ( liste des paramètres );
   //  Mode d'emploi :
   //
   //  Contrat :
   //
 
-  ListeChainee<Trajet> getTrajets() const;
+  ListeChainee<Trajet>& getTrajets() const;
 
   //------------------------------------------------- Surcharge d'opérateurs
   // Trajet & operator = ( const Trajet & autreTrajet );

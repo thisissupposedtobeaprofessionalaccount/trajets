@@ -7,8 +7,6 @@ int main() {
 //  Catalogue catalogue = Catalogue();
   TrajetSimple nouveauTrajetSimple("mon trajet", "a", "b", helicoptere);
 
-
-
 ////  TrajetSimple nouveauTrajetSimple2("mon trajet", "b", "c", helicoptere);
 
  // TrajetCompose nouveauTrajetComp("mon trajet compose", "a", "c", voiture);

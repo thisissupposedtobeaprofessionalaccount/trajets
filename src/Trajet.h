@@ -29,21 +29,21 @@ class Trajet {
 public:
   //----------------------------------------------------- Méthodes publiques
 
-  char *getTitre() const;
+  const char *getTitre() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
   // Contrat :
   //
 
-  char *getVilleArrivee() const;
+  const char *getVilleArrivee() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
   // Contrat :
   //
 
-  char *getVilleDepart() const;
+  const char *getVilleDepart() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //

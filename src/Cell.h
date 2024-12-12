@@ -34,25 +34,25 @@ public:
     //
     // Contrat :
     //
-    T* getData() const;
+    const T* getData() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void setData(T d);
+    void setData(const T& d);
     // Mode d'emploi :
     //
     // Contrat :
     //
     
-    Cell *getNext() const;
+    const Cell *getNext() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void setNext(Cell *n);
+    void setNext(const Cell *n);
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,7 +65,7 @@ public:
     // Contrat :
     //
 
-    Cell (T value);
+    Cell (const T& value);
     // Mode d'emploi :
     //
     // Contrat :
@@ -89,7 +89,7 @@ protected:
 
 //-------------------------------- Autres definitions dependantes de <Cell>
 template <typename T>
-T* Cell<T>::getData() const
+const T* Cell<T>::getData() const
 // Algorithme :
 //
 {
@@ -97,7 +97,7 @@ T* Cell<T>::getData() const
 } //----- Fin de getData
 
 template <typename T>
-void Cell<T>::setData(T d)
+void Cell<T>::setData(const T& d)
 // Algorithme :
 //
 {
@@ -105,7 +105,7 @@ void Cell<T>::setData(T d)
 } //----- Fin de setData
 
 template <typename T>
-Cell<T>* Cell<T>::getNext() const
+const Cell<T>* Cell<T>::getNext() const
 // Algorithme :
 //
 {
@@ -113,7 +113,7 @@ Cell<T>* Cell<T>::getNext() const
 } //----- Fin de getNext
 
 template <typename T>
-void Cell<T>::setNext(Cell *n)
+void Cell<T>::setNext(const Cell *n)
 // Algorithme :
 //
 {
@@ -141,7 +141,7 @@ Cell<T>::Cell ()
 } //----- Fin de Cell
 
 template <typename T>
-Cell<T>::Cell (T value) //: data(value)
+Cell<T>::Cell (const T& value) //: data(value)
 // Algorithme :
 //
 {
