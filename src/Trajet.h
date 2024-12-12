@@ -57,7 +57,7 @@ public:
   // Contrat :
   //
 
-  virtual void afficher() const;
+  virtual void afficher(const char * prefix = "" ) const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //

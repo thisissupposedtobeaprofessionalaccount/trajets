@@ -8,8 +8,8 @@
 #if !defined(CATALOGUE_H)
 #define CATALOGUE_H
 
-#include "Trajet.h"
 #include "ListeChainee.h"
+#include "Trajet.h"
 
 #define MAX_TRAJET_NB 5
 
@@ -31,7 +31,7 @@ class Catalogue {
 public:
   //----------------------------------------------------- Méthodes publiques
 
-  bool ajouterTrajet(const Trajet &nouveauTrajet);
+  bool ajouterTrajet( Trajet *nouveauTrajet);
 
   // Mode d'emploi :
   //
@@ -45,7 +45,7 @@ public:
   //  Contrat :
   //
 
-  ListeChainee<Trajet>& getTrajets() const;
+  const ListeChainee &getTrajets() const;
 
   //------------------------------------------------- Surcharge d'opérateurs
   // Trajet & operator = ( const Trajet & autreTrajet );
@@ -78,7 +78,7 @@ protected:
   //----------------------------------------------------- Méthodes protégées
 
   //----------------------------------------------------- Attributs protégés
-  ListeChainee<Trajet> trajets;
+  ListeChainee trajets;
 };
 
 //-------------------------------- Autres définitions dépendantes de Trajet

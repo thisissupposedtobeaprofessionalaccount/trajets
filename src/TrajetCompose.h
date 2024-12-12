@@ -5,6 +5,7 @@
 *************************************************************************/
 
 //---------- Interface de la classe <> (fichier TrajetCompose.h) ----------------
+#include "Catalogue.h"
 #if !defined(TRAJETCOMPOSE_H)
 #define TRAJETCOMPOSE_H
 
@@ -29,14 +30,14 @@ class TrajetCompose : public Trajet {
 public:
   //----------------------------------------------------- Méthodes publiques
 
-  void afficher() const;
+  void afficher(const  char * prefix = "" ) const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
   // Contrat :
   //
 
-  void ajouterEtape( const Trajet & nouvelleEtape);
+  void ajouterEtape( Trajet * nouvelleEtape);
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
@@ -89,7 +90,7 @@ protected:
 
   //----------------------------------------------------- Attributs protégés
   // will become a linked list 
-  Trajet* steps;
+  ListeChainee etapes;
   unsigned int nb_trajets;
 };
 

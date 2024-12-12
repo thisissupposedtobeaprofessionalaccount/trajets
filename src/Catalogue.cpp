@@ -3,23 +3,23 @@
 
 Catalogue::Catalogue() {
 #ifdef MAP
-  cout << "Construction de Catalogue" << endl;
+  std::cout << "Construction de Catalogue" << std::endl;
 #endif
 }
 
-ListeChainee<Trajet> Catalogue::getTrajets() const { return trajets; }
+const ListeChainee& Catalogue::getTrajets() const { return trajets; }
 
 Catalogue::~Catalogue() {
 #ifdef MAP
-  cout << "Destruction de Catalogue" << endl;
+  std::cout << "Destruction de Catalogue" << std::endl;
 #endif
 }
 
-int Catalogue::ajouterTrajet(const Trajet &nouveauTrajet) {
+bool Catalogue::ajouterTrajet(  Trajet *nouveauTrajet) {
   trajets.insertAtTail(nouveauTrajet);
   return 1;
 }
 
-int Catalogue::supprimerTrajetParTitre(const char* titre) {
+bool Catalogue::supprimerTrajetParTitre(const char* titre) {
   return trajets.deleteCell(Trajet(titre));
 }

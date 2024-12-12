@@ -28,7 +28,7 @@ class TrajetSimple : public Trajet {
 public:
   //----------------------------------------------------- Méthodes publiques
 
-  virtual void afficher() const;
+  virtual void afficher(const char * prefix = "") const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //

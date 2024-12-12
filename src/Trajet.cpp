@@ -1,9 +1,9 @@
 #include "Trajet.h"
 #include <iostream>
 
-char *Trajet::getTitre() const { return titre; }
-char *Trajet::getVilleArrivee() const { return villeArrivee; }
-char *Trajet::getVilleDepart() const { return villeDepart; }
+const char *Trajet::getTitre() const { return titre; }
+const char *Trajet::getVilleArrivee() const { return villeArrivee; }
+const char *Trajet::getVilleDepart() const { return villeDepart; }
 EMoyenTransport Trajet::getMoyenTransport() const { return moyenTransport; }
 
 bool Trajet::operator==(const Trajet &autre) {
@@ -75,16 +75,16 @@ Trajet &Trajet::operator=(const Trajet &autre) {
 
 Trajet::Trajet(const Trajet &autre) {
 #ifdef MAP
-  cout << "Construction par copie de Trajet" << endl;
+  std::cout << "Construction par copie de Trajet" << std::endl;
 #endif
 
   *this = autre;
 }
 
-Trajet::Trajet(const char *titre, const char *villeArrivee,
-               const char *villeDepart, const EMoyenTransport moyenTransport) {
+Trajet::Trajet(const char *titre, const char *villeDepart,
+               const char *villeArrivee, const EMoyenTransport moyenTransport) {
 #ifdef MAP
-  cout << "Construction de Trajet" << endl;
+  std::cout << "Construction de Trajet" << std::endl;
 #endif
   this->titre = new char[MAX_STRING_SIZE];
   this->villeArrivee = new char[MAX_STRING_SIZE];
@@ -119,16 +119,16 @@ Trajet::Trajet(const char *titre, const char *villeArrivee,
 
 Trajet::~Trajet() {
 #ifdef MAP
-  cout << "Destruction de Trajet" << endl;
+  std::cout << "Destruction de Trajet" << std::endl;
 #endif
   delete[] titre;
   delete[] villeArrivee;
   delete[] villeDepart;
 }
 
-void Trajet::afficher() const {
-  std::cout << "Trajet : " << titre << std::endl;
-  std::cout << "Ville d'arrivee : " << villeArrivee << std::endl;
-  std::cout << "Ville de depart : " << villeArrivee << std::endl;
-  std::cout << "Moyen de transport : " << villeArrivee << std::endl;
+void Trajet::afficher(const char * prefix ) const {
+  std::cout <<prefix<< "Trajet : " << titre << std::endl;
+  std::cout <<prefix<< "Ville de depart : " << villeDepart << std::endl;
+  std::cout <<prefix<< "Ville d'arrivee : " << villeArrivee << std::endl;
+  std::cout <<prefix<< "Moyen de transport : " << "TODO" << std::endl;
 }
