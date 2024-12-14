@@ -40,6 +40,7 @@ public:
   ListeChainee *rechercheSimple(const char *villeDepart,
                            const char *villeArrivee) const;
   const Cell *getTete() const;
+  const Cell *getDerniereCell() const;
   // Mode d'emploi :
   //
   // Contrat :

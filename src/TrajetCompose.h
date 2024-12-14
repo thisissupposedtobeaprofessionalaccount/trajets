@@ -6,12 +6,24 @@
 
 //---------- Interface de la classe <> (fichier TrajetCompose.h)
 //----------------
-#include "Catalogue.h"
 #if !defined(TRAJETCOMPOSE_H)
 #define TRAJETCOMPOSE_H
 
-#define MAX_TRAJET_SIZE 5
+
+
+enum ECodeErreurTrajetCompose {
+  SUCCES_AJOUT_ETAPE,
+// code d'erreur caractérisant une première étape dont la ville de départ est
+// différente de la ville de départ du trajet.
+  ERREUR_PREMIERE_ETAPE,
+// code d'erreur caractérisant une étape intermediaire dont la ville de départ
+// est differente de la ville d'arrivée de l'étape precedente.
+  ERREUR_ETAPES_INTERMEDIAIRES
+};
+
+#include "Catalogue.h"
 #include "Trajet.h"
+#include "TrajetSimple.h"
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -38,7 +50,7 @@ public:
   // Contrat :
   //
 
-  void ajouterEtape(Trajet *nouvelleEtape);
+  ECodeErreurTrajetCompose ajouterEtape(TrajetSimple *nouvelleEtape);
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //

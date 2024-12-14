@@ -4,7 +4,6 @@
 #include <cstdio>
 #include <cstring>
 
-
 static TrajetSimple *questionnaireTrajetSimple(bool estEtape = false) {
   char *titre = new char[MAX_STRING_SIZE],
        *villeArrivee = new char[MAX_STRING_SIZE],
@@ -24,7 +23,6 @@ static TrajetSimple *questionnaireTrajetSimple(bool estEtape = false) {
                "bateau, helicoptere) :"
             << std::endl;
   fgets(moyenTransport, MAX_STRING_SIZE, stdin);
-  std::cout<<villeDepart<<std::endl;
   EMoyenTransport mt = depuisChaine(moyenTransport);
 
   TrajetSimple *nouveauTrajetSimple =
@@ -33,7 +31,7 @@ static TrajetSimple *questionnaireTrajetSimple(bool estEtape = false) {
   delete[] titre;
   delete[] villeArrivee;
   delete[] villeDepart;
-  delete [] moyenTransport;
+  delete[] moyenTransport;
 
   return nouveauTrajetSimple;
 }
@@ -43,8 +41,7 @@ static TrajetCompose *questionnaireTrajetCompose(bool estEtape = false) {
        *villeDepart = new char[MAX_STRING_SIZE],
        *villeArrivee = new char[MAX_STRING_SIZE],
        *moyenTransport = new char[MAX_STRING_SIZE];
-  std::cout << "Entrez le nom " << (estEtape ? "de l'étape " : "du trajet ")
-            << ":" << std::endl;
+  std::cout << "Entrez le nom du trajet :" << std::endl;
   fgets(titre, MAX_STRING_SIZE, stdin);
 
   std::cout << "Entrez la ville de depart :" << std::endl;
@@ -56,10 +53,10 @@ static TrajetCompose *questionnaireTrajetCompose(bool estEtape = false) {
   int reponse = 0;
   bool quitter = false;
   bool auMoinsUneEtape = false;
+
   while (quitter == false) {
     std::cout << "Veuillez choisir une option :\n1. Clore le "
-                 "trajet.\n2.Ajouter un trajet intérmediaire simple.\n3. "
-                 "Ajouter un trajet intérmediaire composé."
+                 "trajet.\n2. Ajouter un trajet intérmediaire simple."
               << std::endl;
 
     std::cin >> reponse;
@@ -87,12 +84,28 @@ static TrajetCompose *questionnaireTrajetCompose(bool estEtape = false) {
       break;
     }
     case 2:
-      nouveauTrajetCompose->ajouterEtape(questionnaireTrajetSimple(true));
-      auMoinsUneEtape = true;
-      break;
-    case 3:
-      nouveauTrajetCompose->ajouterEtape(questionnaireTrajetCompose(true));
-      auMoinsUneEtape = true;
+      switch (
+          nouveauTrajetCompose->ajouterEtape(questionnaireTrajetSimple(true))) {
+      case SUCCES_AJOUT_ETAPE:
+        std::cout << "\033[32mL'étape a été ajoutée avec succès.\033[0m"
+                  << std::endl;
+        auMoinsUneEtape = true;
+        break;
+      case ERREUR_PREMIERE_ETAPE:
+        std::cout
+            << "\033[31mErreur lors de l'ajout d'une étape : la première étape "
+               "d'un trajet doit avoir la même ville de départ que celle "
+               "spécifiée dans le trajet. L'étape n'a pas été ajoutée.\033[0m"
+            << std::endl;
+        break;
+      case ERREUR_ETAPES_INTERMEDIAIRES:
+        std::cout << "\033[31mErreur lors de l'ajout d'une étape : une étape "
+                     "intérmediaire doit avoir la même ville de départ que la "
+                     "ville d'arrivée de l'étape précédente. L'étape n'a pas "
+                     "été ajoutée.\033[0m"
+                  << std::endl;
+        break;
+      }
       break;
     default:
       break;
@@ -102,32 +115,22 @@ static TrajetCompose *questionnaireTrajetCompose(bool estEtape = false) {
   delete[] titre;
   delete[] villeDepart;
   delete[] villeArrivee;
-  delete [] moyenTransport;
+  delete[] moyenTransport;
 
   return nouveauTrajetCompose;
 }
 
 int main() {
   Catalogue catalogue = Catalogue();
-  //  TrajetSimple nouveauTrajetSimple("mon trajet", "a", "b", helicoptere);
-  //  TrajetSimple nouveauTrajetSimple2("mon trajet2", "a", "b", helicoptere);
-  //  TrajetCompose nouveauTrajetCompose("mon trajet compose", "x", "y",
-  //                                     helicoptere);
-  //  TrajetCompose nouveauTrajetCompose2("mon trajet compose 222222", "v", "p",
-  //                                     helicoptere);
-  //  nouveauTrajetCompose.ajouterEtape(&nouveauTrajetSimple);
-  //  catalogue.ajouterTrajet(&nouveauTrajetSimple);
-  //  catalogue.ajouterTrajet(&nouveauTrajetCompose);
-  //  catalogue.getTrajets().afficher();
-  //
 
   bool quitter = false;
   int reponse;
+
   while (quitter == false) {
     std::cout << std::endl
               << "Veuillez choisir une option :\n1. Afficher le catalogue de "
                  "trajets.\n2. Ajouter un trajet simple.\n3. Ajouter un trajet "
-                 "composé\n4. Recherche simple de trajet.\n9. Quitter."
+                 "composé\n4. Recherche simple de trajet.\n\033[31m9. Quitter.\033[0m"
               << std::endl;
 
     std::cin >> reponse;

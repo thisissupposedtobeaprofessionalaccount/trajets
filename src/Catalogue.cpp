@@ -27,7 +27,7 @@ void Catalogue::rechercheSimple(const char *villeDepart,
 
 void Catalogue::afficher() const {
   if (trajets.getTete() == nullptr)
-    std::cout << "Aucun trajet dans le catalogue." << std::endl;
+    std::cout << "\033[33mAucun trajet dans le catalogue.\033[0m" << std::endl;
   trajets.afficher();
 }
 const ListeChainee &Catalogue::getTrajets() const { return trajets; }
@@ -40,6 +40,7 @@ Catalogue::~Catalogue() {
 
 bool Catalogue::ajouterTrajet(Trajet *nouveauTrajet) {
   trajets.insererEnQueue(nouveauTrajet);
+  std::cout << "\033[32mLe trajet a été ajouté avec succès.\033[0m" << std::endl;
   return 1;
 }
 

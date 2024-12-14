@@ -6,7 +6,7 @@ ListeChainee *ListeChainee::rechercheSimple(const char *villeDepart,
 
   Cell *courante = tete;
   ListeChainee *listeResultat = new ListeChainee;
-  Trajet* aAjouter;
+  Trajet *aAjouter;
 
   while (courante != nullptr) {
     if (*courante->getDonnee() == aTrouver) {
@@ -17,6 +17,17 @@ ListeChainee *ListeChainee::rechercheSimple(const char *villeDepart,
   }
 
   return listeResultat;
+}
+
+const Cell *ListeChainee::getDerniereCell() const {
+  if (tete == nullptr || tete->getSuivante() == nullptr)
+    return tete;
+
+  Cell *courante = tete;
+  while (courante->getSuivante() != nullptr) {
+    courante = courante->getSuivante();
+  }
+  return courante;
 }
 
 const Cell *ListeChainee::getTete() const

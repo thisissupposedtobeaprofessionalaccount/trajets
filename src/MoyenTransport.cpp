@@ -2,7 +2,6 @@
 #include <iostream>
 
 EMoyenTransport depuisChaine(const char *chaine) {
-  std::cout << chaine << std::endl;
   if (strcmp(chaine, "bus\n") == 0)
     return bus;
   if (strcmp(chaine, "tramway\n") == 0)
