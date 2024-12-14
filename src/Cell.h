@@ -34,7 +34,7 @@ public:
   //
   // Contrat :
   //
-  Trajet *getData() const;
+  Trajet *getDonnee() const;
   // Mode d'emploi :
   //
   //
@@ -45,13 +45,13 @@ public:
   // Contrat :
   //
 
-  Cell *getNext() const;
+  Cell *getSuivante() const;
   // Mode d'emploi :
   //
   // Contrat :
   //
 
-  void setNext(Cell *n);
+  void setSuivante(Cell *n);
   // Mode d'emploi :
   //
   // Contrat :
@@ -82,8 +82,8 @@ protected:
   //----------------------------------------------------- Methodes protegees
 
   //----------------------------------------------------- Attributs proteges
-  Trajet *data;
-  Cell *next;
+  Trajet *donnee;
+  Cell *suivante;
 };
 
 //-------------------------------- Autres definitions dependantes de <Cell>

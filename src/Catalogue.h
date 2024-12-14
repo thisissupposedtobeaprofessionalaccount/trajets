@@ -31,7 +31,10 @@ class Catalogue {
 public:
   //----------------------------------------------------- Méthodes publiques
 
-  bool ajouterTrajet( Trajet *nouveauTrajet);
+  void rechercheSimple(const char *villeDepart,
+                                 const char *villeArrivee) const;
+  void afficher() const;
+  bool ajouterTrajet(Trajet *nouveauTrajet);
 
   // Mode d'emploi :
   //

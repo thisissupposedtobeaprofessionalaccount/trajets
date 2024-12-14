@@ -8,10 +8,10 @@
 
 //---------- Interface de la classe <Liste Chainee> (fichier ListeChainee.h)
 //----------------
-#include <iostream>
 #if !defined(LISTECHAINEE_H)
 #define LISTECHAINEE_H
 
+#include <iostream>
 #include "Cell.h"
 
 //--------------------------------------------------- Interfaces utilisees
@@ -37,13 +37,15 @@ public:
   // Contrat :
   //
 
-  const Cell *getHead() const;
+  ListeChainee *rechercheSimple(const char *villeDepart,
+                           const char *villeArrivee) const;
+  const Cell *getTete() const;
   // Mode d'emploi :
   //
   // Contrat :
   //
 
-  void afficher(const char * prefix = "") const ;
+  void afficher(const char *prefix = "") const;
   // Mode d'emploi:
   //  Firstly checks if the list is NULL
   //  While the list is not NULL it prints the value of the element then it goes
@@ -51,20 +53,20 @@ public:
   // Contrat:
   //
 
-  void insertAtTail( Trajet* value);
+  void insererEnQueue(Trajet *valeur);
   // Mode d'emploi:
   //  creates a new node of the value, makes the head of the list be the new
   //  node and then t
   // Contrat:
   //
-  void insertAtHead( Trajet* value);
+  void insererEnTete(Trajet *valeur);
   // Mode d'emploi:
   //  creates a new node of the value, makes the head of the list be the new
   //  node and then t
   // Contrat:
   //
 
-  int deleteCell(const Trajet& value);
+  int supprimerCell(const Trajet &valeur);
   // Mode d'emploi:
   //  checks if list is empty then checks if the node we want to delete is the
   //  first node if not, we check while the list is not NULL we also check if
@@ -72,7 +74,7 @@ public:
   // Contrat:
   //
 
-  int deleteAllCell(const Trajet& value);
+  int supprimerToutesCell(const Trajet &valeur);
   // Mode d'emploi:
   //  checks if list is empty then checks if the node we want to delete is the
   //  first node if not, we check while the list is not NULL we also check if
@@ -96,20 +98,19 @@ public:
 
 protected:
   //----------------------------------------------------- Methodes protegees
-  void setHead( Cell *h);
+  void setTete(Cell *h);
   // Mode d'emploi :
   //
   // Contrat :
   //
-  void freeList();
+  void libererListe();
   // Mode d'emploi:
   //  frees the entire linked list
   // Contrat:
   //
 
-
   //----------------------------------------------------- Attributs proteges
-  Cell *head;
+  Cell *tete;
 };
 
 #endif // LISTECHAINEE_H

@@ -1,122 +1,138 @@
 #include "ListeChainee.h"
 
-const Cell *ListeChainee::getHead() const
+ListeChainee *ListeChainee::rechercheSimple(const char *villeDepart,
+                                            const char *villeArrivee) const {
+  Trajet aTrouver = Trajet("", villeDepart, villeArrivee, voiture);
+
+  Cell *courante = tete;
+  ListeChainee *listeResultat = new ListeChainee;
+  Trajet* aAjouter;
+
+  while (courante != nullptr) {
+    if (*courante->getDonnee() == aTrouver) {
+      aAjouter = new Trajet(*courante->getDonnee());
+      listeResultat->insererEnQueue(aAjouter);
+    }
+    courante = courante->getSuivante();
+  }
+
+  return listeResultat;
+}
+
+const Cell *ListeChainee::getTete() const
 // Algorithme :
 //
 {
-  return head;
+  return tete;
 } //----- Fin de getHead
 
-
-void ListeChainee::setHead( Cell *h)
+void ListeChainee::setTete(Cell *h)
 // Algorithme :
 //
 {
-  head = h;
+  tete = h;
 } //----- Fin de setHead
 
-
-void ListeChainee::afficher(const char * prefix) const 
+void ListeChainee::afficher(const char *prefix) const
 // Algorithme:
 //
 {
-  Cell *current = head;
+  Cell *courante = tete;
 
-  if (head == nullptr) {
+  if (tete == nullptr) {
     return;
   }
 
-  while (current != nullptr) {
-    current->getData()->afficher(prefix);
-    current = current->getNext();
+  while (courante != nullptr) {
+    courante->getDonnee()->afficher(prefix);
+    courante = courante->getSuivante();
   }
 
 } //----- Fin d'Afficher
 
-
-void ListeChainee::insertAtTail( Trajet* value)
+void ListeChainee::insererEnQueue(Trajet *valeur)
 // Algorithme :
 {
-  Cell *newCell = new Cell(value);
-  if (head == nullptr) {
-    setHead(newCell);
+  Cell *newCell = new Cell(valeur);
+  if (tete == nullptr) {
+    setTete(newCell);
     return;
   }
-  Cell *temp = head;
-  while (temp->getNext() != nullptr) {
-    temp = temp->getNext();
+  Cell *temp = tete;
+  while (temp->getSuivante() != nullptr) {
+    temp = temp->getSuivante();
   }
-  temp->setNext(newCell);
+  temp->setSuivante(newCell);
 } //----- Fin d'insertAtTail
 
-
-void ListeChainee::insertAtHead( Trajet* value)
+void ListeChainee::insererEnTete(Trajet *value)
 // Algorithme :
 //
 {
   Cell *newCell = new Cell(value);
-  newCell->setNext(head);
-  head = newCell;
+  newCell->setSuivante(tete);
+  tete = newCell;
 } //----- Fin d'insertAtHead
 
-
-int ListeChainee::deleteCell(const Trajet& value)
+int ListeChainee::supprimerCell(const Trajet &value)
 // Algorithme :
 {
-  if (head == nullptr)
+  if (tete == nullptr)
     return 0;
-  if (*head->getData() == value) {
-    Cell* tmp = head;
-    head = tmp->getNext();
+  if (*tete->getDonnee() == value) {
+    Cell *tmp = tete;
+    tete = tmp->getSuivante();
     delete tmp;
     return 1;
   }
 
-  Cell *current = head;
-  while (current->getNext() != nullptr && *current->getNext()->getData() != value) {
-    current = current->getNext();
+  Cell *courante = tete;
+  while (courante->getSuivante() != nullptr &&
+         *courante->getSuivante()->getDonnee() != value) {
+    courante = courante->getSuivante();
   }
 
-  if (current->getNext() == nullptr)
+  if (courante->getSuivante() == nullptr)
     return 0;
 
-  Cell * toDelete = current->getNext();
-  Cell *after = toDelete->getNext();
-  current->setNext(after);
-  delete toDelete;
+  Cell *aSupprimer = courante->getSuivante();
+  Cell *suivante = aSupprimer->getSuivante();
+  courante->setSuivante(suivante);
+  delete aSupprimer;
 
   return 1;
 } //----- Fin de deleteCell
 
+int ListeChainee::supprimerToutesCell(const Trajet &value) {
+  if (tete == nullptr)
+    return 0;
+  Cell *previous = tete;
+  Cell *current = tete->getSuivante();
 
-int ListeChainee::deleteAllCell(const Trajet& value){
-  if (head == nullptr) return 0;
-  Cell *previous = head;
-  Cell *current = head->getNext();
-
-  while(current != nullptr){
-    if (current->getData()->getTitre() == value.getTitre()){
-      previous->setNext(current->getNext());
+  while (current != nullptr) {
+    if (current->getDonnee()->getTitre() == value.getTitre()) {
+      previous->setSuivante(current->getSuivante());
       delete current;
     }
-    current = previous->getNext()->getNext();
-    previous = previous->getNext();
+    current = previous->getSuivante()->getSuivante();
+    previous = previous->getSuivante();
   }
 
   return 1;
 }
 
-
-
-void ListeChainee::freeList()
+void ListeChainee::libererListe()
 // Algorithme :
 // While the list is not empty we store the current head, move the head to the
 // next node and then free the current node
 {
   Cell *temp;
-  while (head != nullptr) {
-    temp = head;
-    head = head->getNext();
+  while (tete != nullptr) {
+    temp = tete;
+    tete = tete->getSuivante();
+    // Liberer le Trajet présent dans la cellule.
+    delete temp->getDonnee();
+    // Liberer la cellule.
     delete temp;
   }
 } //----- Fin de Méthode
@@ -131,7 +147,7 @@ void ListeChainee::freeList()
 //-------------------------------------------- Constructeurs - destructeur
 
 ListeChainee::ListeChainee()
-    : head(nullptr)
+    : tete(nullptr)
 // Algorithme :
 //
 {
@@ -140,7 +156,6 @@ ListeChainee::ListeChainee()
 #endif
 } //----- Fin de ListeChainee
 
-
 ListeChainee::~ListeChainee()
 // Algorithme :
 //
@@ -148,9 +163,8 @@ ListeChainee::~ListeChainee()
 #ifdef MAP
   std::cout << "Appel au destructeur de <ListeChainee>" << std::endl;
 #endif
-  freeList();
+  libererListe();
 } //----- Fin de ~ListeChainee
 
 //-------------------------------- Autres definitions dependantes de
 //<ListeChainee>
-

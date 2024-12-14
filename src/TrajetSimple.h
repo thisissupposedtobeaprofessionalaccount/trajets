@@ -50,7 +50,7 @@ public:
   // Contrat :
   //
 
-    TrajetSimple(const char *titre, const char *villeArrivee, const char *villeDepart,
+    TrajetSimple(const char *titre, const char *villeDepart, const char *villeArrivee,
          const EMoyenTransport moyenTransport);
   // Mode d'emploi :
   //

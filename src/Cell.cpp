@@ -1,32 +1,31 @@
 #include "Cell.h"
-#include <iostream>
 
-Trajet *Cell::getData() const
+Trajet *Cell::getDonnee() const
 // Algorithme :
 //
 {
-  return data;
+  return donnee;
 } //----- Fin de getData
 
 void Cell::setData( Trajet *d)
 // Algorithme :
 //
 {
-  data = d;
+  donnee = d;
 } //----- Fin de setData
 
-Cell *Cell::getNext() const
+Cell *Cell::getSuivante() const
 // Algorithme :
 //
 {
-  return next;
+  return suivante;
 } //----- Fin de getNext
 
-void Cell::setNext(Cell *n)
+void Cell::setSuivante(Cell *n)
 // Algorithme :
 //
 {
-  next = n;
+  suivante = n;
 } //----- Fin de setNext
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -44,11 +43,11 @@ Cell::Cell()
 #ifdef MAP
   std::cout << "Appel au constructeur de <Cell>" << std::endl;
 #endif
-  data = 0;
-  next = nullptr;
+  donnee = 0;
+  suivante = nullptr;
 } //----- Fin de Cell
 
-Cell::Cell( Trajet *value) //: data(value)
+Cell::Cell( Trajet *valeur) //: data(value)
 // Algorithme :
 //
 {
@@ -56,8 +55,8 @@ Cell::Cell( Trajet *value) //: data(value)
   std::cout << "Appel au constructeur de <Cell>" << std::endl;
 #endif
 
-  this->data = value;
-  this->next = nullptr;
+  this->donnee = valeur;
+  this->suivante = nullptr;
 } //----- Fin de Cell
 
 Cell::~Cell()

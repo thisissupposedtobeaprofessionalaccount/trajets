@@ -29,6 +29,7 @@ class Trajet {
 public:
   //----------------------------------------------------- Méthodes publiques
 
+  void setTitre(const char *titre);
   const char *getTitre() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
@@ -36,6 +37,7 @@ public:
   // Contrat :
   //
 
+  void setVilleArrivee(const char *villeArrivee);
   const char *getVilleArrivee() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
@@ -43,6 +45,7 @@ public:
   // Contrat :
   //
 
+  void setVilleDepart(const char *villeDepart);
   const char *getVilleDepart() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
@@ -50,6 +53,7 @@ public:
   // Contrat :
   //
 
+  void setMoyenTransport(EMoyenTransport moyenTransport);
   EMoyenTransport getMoyenTransport() const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
@@ -57,7 +61,7 @@ public:
   // Contrat :
   //
 
-  virtual void afficher(const char * prefix = "" ) const;
+  virtual void afficher(const char *prefix = "") const;
   // type Méthode ( liste des paramètres );
   // Mode d'emploi :
   //
@@ -90,8 +94,8 @@ public:
   // Contrat :
   //
 
-  Trajet(const char *titre = "", const char *villeArrivee = "",
-         const char *villeDepart = "",
+  Trajet(const char *titre = "", const char *villeDepart = "",
+         const char *villeArrivee = "",
          const EMoyenTransport moyenTransport = voiture);
   // Mode d'emploi :
   //
